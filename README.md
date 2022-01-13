@@ -1,6 +1,6 @@
 # Pets Server
 
-Just a simple PE(R)N server that I will use as boilerplate.
+Just a simple ME(R)N server that I will use as boilerplate.
 Uses nodemon.
 
 ## Install and run
@@ -19,7 +19,7 @@ Who would have thank.
 
 ### Get one pet
 
-`curl http://localhost:3000/api/pets/1`
+`curl http://localhost:3000/api/pets/:id`
 
 ### Create a new pet
 
