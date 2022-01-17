@@ -10,7 +10,8 @@ const PetSchema = new Schema({
     type: Number
   },
   userId: {
-    type: Schema.ObjectId
+    type: Schema.ObjectId,
+    ref: 'User'
   },
   features: {
     type: [String]

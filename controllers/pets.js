@@ -2,7 +2,7 @@ import Pet from '../models/Pet.js';
 
 const getPets = async (req, res) => {
   try {
-    const pets = await Pet.find();
+    const pets = await Pet.find().populate('userId');
     res.json({
       data: pets,
       msg: 'list of all pets in the db',
@@ -17,7 +17,7 @@ const getPets = async (req, res) => {
 const getPet = async (req, res) => {
   try {
     const { id } = req.params;
-    const pet = await Pet.findById(id)
+    const pet = await Pet.findById(id).populate('userId');
     res.json({
       data: pet,
       msg: `pet with id ${id}`,

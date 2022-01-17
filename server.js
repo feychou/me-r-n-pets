@@ -4,6 +4,8 @@ import express from "express";
 
 import connectDB from './dbinit.js';
 import pets from './api/pets.js';
+import users from './api/users.js';
+
 dotenv.config();
 
 const PORT = process.env.PORT || 3000;
@@ -12,5 +14,6 @@ connectDB();
 server.use(express.json());
 server.get('/', (req, res) => res.send('Welcome to the pet server!'));
 server.use('/api/pets', pets);
+server.use('/api/users', users);
 
 server.listen(PORT, () => console.log(`Server started on port ${PORT}`.rainbow));
