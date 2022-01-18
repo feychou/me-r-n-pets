@@ -3,7 +3,7 @@
 Just a simple ME(R)N server that I will use as boilerplate.
 Uses nodemon.
 
-## Install and run
+## Install and run :running_woman:
 
 ```bash
 npm install
