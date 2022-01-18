@@ -3,6 +3,7 @@
 Just a simple ME(R)N backend that I use as a boilerplate every time I need a REST api.
 
 Uses nodemon on dev, it's meant to be connected to a MongoDB instance on [Atlas](https://www.mongodb.com/atlas/database).
+
 In order to connect, provide your `MONGODB_URI` in your `.env` file.
 Refer to the models in the code for the collections schema.
 
