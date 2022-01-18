@@ -1,7 +1,7 @@
 # Pets Server
 
-Just a simple ME(R)N server that I will use as boilerplate.
-Uses nodemon.
+Just a simple ME(R)N backend that I use as a boilerplate every time I need a REST api.
+Uses nodemon on dev.
 
 ## Install and run :running_woman:
 
