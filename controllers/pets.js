@@ -1,6 +1,6 @@
 import Pet from '../models/Pet.js';
 
-const getPets = async (req, res) => {
+const getPets = async (req, res, next) => {
   try {
     const pets = await Pet.find().populate('userId');
     res.json({
@@ -8,13 +8,12 @@ const getPets = async (req, res) => {
       msg: 'list of all pets in the db',
       success: true
     })
-
   } catch(err) {
-    console.log(err)
+    next(err)
   }
 }
 
-const getPet = async (req, res) => {
+const getPet = async (req, res, next) => {
   try {
     const { id } = req.params;
     const pet = await Pet.findById(id).populate('userId');
@@ -23,14 +22,12 @@ const getPet = async (req, res) => {
       msg: `pet with id ${id}`,
       success: true
     })
-
   } catch(err) {
-    console.log(err)
-
+    next(err)
   }
 }
 
-const createPet = async (req, res) => {
+const createPet = async (req, res, next) => {
   try {
     const {
       name,
@@ -47,13 +44,13 @@ const createPet = async (req, res) => {
       msg: `pet with id ${pet.id} successfully created`
     })
   } catch(err) {
-    console.log(err)
+    next(err)
   }
 
 
 }
 
-const deletePet = async (req, res) => {
+const deletePet = async (req, res, next) => {
   try {
     const { id } = req.params
 
@@ -65,11 +62,11 @@ const deletePet = async (req, res) => {
       msg: `pet with id ${id} has been successfully deleted!`
     })
   } catch(err) {
-    console.log(err)
+    next(err)
   }
 }
 
-const editPet = async (req, res) => {
+const editPet = async (req, res, next) => {
   try {
     const { id } = req.params;
     const {
@@ -85,13 +82,9 @@ const editPet = async (req, res) => {
       msg: `pet with id ${id} successfully updated`,
       success: true
     })
-
   } catch(err) {
-    console.log(err)
+    next(err)
   }
-
-
-
 }
 
 export { 

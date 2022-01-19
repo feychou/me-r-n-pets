@@ -5,6 +5,7 @@ import express from "express";
 import connectDB from './dbinit.js';
 import pets from './api/pets.js';
 import users from './api/users.js';
+import errorHandler from './middleware/error.js';
 
 dotenv.config();
 
@@ -15,5 +16,6 @@ server.use(express.json());
 server.get('/', (req, res) => res.send('Welcome to the pet server!'));
 server.use('/api/pets', pets);
 server.use('/api/users', users);
+server.use(errorHandler);
 
 server.listen(PORT, () => console.log(`Server started on port ${PORT}`.rainbow));

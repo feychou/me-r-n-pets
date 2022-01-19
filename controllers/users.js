@@ -1,6 +1,6 @@
 import User from '../models/User.js';
 
-const getUsers = async (req, res) => {
+const getUsers = async (req, res, next) => {
   try {
     const users = await User.find();
     res.json({
@@ -8,13 +8,12 @@ const getUsers = async (req, res) => {
       msg: 'list of all Users in the db',
       success: true
     })
-
   } catch(err) {
-    console.log(err)
+    next(err)
   }
 }
 
-const getUser = async (req, res) => {
+const getUser = async (req, res, next) => {
   try {
     const { id } = req.params;
     const user = await User.findById(id)
@@ -23,14 +22,12 @@ const getUser = async (req, res) => {
       msg: `user with id ${id}`,
       success: true
     })
-
   } catch(err) {
-    console.log(err)
-
+    next(err)
   }
 }
 
-const createUser = async (req, res) => {
+const createUser = async (req, res, next) => {
   try {
     const { name } = req.body;
     const user = await User.create({ name });
@@ -41,13 +38,13 @@ const createUser = async (req, res) => {
       msg: `user with id ${user.id} successfully created`
     })
   } catch(err) {
-    console.log(err)
+    next(err)
   }
 
 
 }
 
-const deleteUser = async (req, res) => {
+const deleteUser = async (req, res, next) => {
   try {
     const { id } = req.params
 
@@ -59,11 +56,11 @@ const deleteUser = async (req, res) => {
       msg: `user with id ${id} has been successfully deleted!`
     })
   } catch(err) {
-    console.log(err)
+    next(err)
   }
 }
 
-const editUser = async (req, res) => {
+const editUser = async (req, res, next) => {
   try {
     const { id } = req.params;
     const { name } = req.body;
@@ -73,13 +70,9 @@ const editUser = async (req, res) => {
       msg: `user with id ${id} successfully updated`,
       success: true
     })
-
   } catch(err) {
-    console.log(err)
+    next(err)
   }
-
-
-
 }
 
 export { 
