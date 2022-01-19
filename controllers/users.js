@@ -2,9 +2,9 @@ import User from '../models/User.js';
 
 const getUsers = async (req, res) => {
   try {
-    const Users = await User.find();
+    const users = await User.find();
     res.json({
-      data: Users,
+      data: users,
       msg: 'list of all Users in the db',
       success: true
     })
@@ -17,10 +17,10 @@ const getUsers = async (req, res) => {
 const getUser = async (req, res) => {
   try {
     const { id } = req.params;
-    const User = await User.findById(id)
+    const user = await User.findById(id)
     res.json({
-      data: User,
-      msg: `User with id ${id}`,
+      data: user,
+      msg: `user with id ${id}`,
       success: true
     })
 
@@ -33,12 +33,12 @@ const getUser = async (req, res) => {
 const createUser = async (req, res) => {
   try {
     const { name } = req.body;
-    const User = await User.create({ name });
+    const user = await User.create({ name });
 
     res.json({
-      data: User,
+      data: user,
       success: true,
-      msg: `User with id ${User.id} successfully created`
+      msg: `user with id ${user.id} successfully created`
     })
   } catch(err) {
     console.log(err)
@@ -51,12 +51,12 @@ const deleteUser = async (req, res) => {
   try {
     const { id } = req.params
 
-    const User = await User.findByIdAndDelete(id);
+    const user = await User.findByIdAndDelete(id);
 
     res.json({
-      data: User,
+      data: user,
       success: true,
-      msg: `User with id ${id} has been successfully deleted!`
+      msg: `user with id ${id} has been successfully deleted!`
     })
   } catch(err) {
     console.log(err)
@@ -67,10 +67,10 @@ const editUser = async (req, res) => {
   try {
     const { id } = req.params;
     const { name } = req.body;
-    const User = await User.findByIdAndUpdate(id, { name }, { new: true });
+    const user = await User.findByIdAndUpdate(id, { name }, { new: true });
     res.json({
-      data: User,
-      msg: `User with id ${id} successfully updated`,
+      data: user,
+      msg: `user with id ${id} successfully updated`,
       success: true
     })
 
